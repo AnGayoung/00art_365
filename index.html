@@ -134,7 +134,9 @@ h2 {
 .hr { border-top:1px solid #ccc; margin:0.8em 0; }  /* ✅ 여백 압축 */
 
 /* 선택지 */
-.choiceRow { margin: .25em 0 .6em; }
+.choiceRow {
+  margin: 0.2em 0 0.2em;  /* 위·양옆 0.2em, 아래 0.4em */
+}
 .choice {
   display:inline-block;
   padding:.35em .7em;
@@ -154,20 +156,18 @@ h2 {
 /* 버튼 */
 .btn-next, .btn-start, .btn-result {
   display:inline-block;
-  padding:.5em .9em;
+  padding:.7em 1.2em;   /* ✅ 패딩 조금 더 */
   border:1px solid #555;
-  border-radius:.3em;
+  border-radius:.4em;
   cursor:pointer;
-  margin-top:.6em;
+  margin-top:1em;
   background:#fff;
   color:#000;
   font-weight:600;
-  font-size:.9em;
-  line-height: 1.2;
+  font-size:1.05em;     /* ✅ 글자 5% 정도 확대 */
+  line-height: 1.3;
 }
-.btn-next[disabled], .btn-result[disabled] {
-  opacity:.5; cursor:not-allowed; border-color:#bbb; background:#fafafa; color:#999;
-}
+
 
 /* KPI 뱃지 */
 .kpi {
@@ -200,12 +200,15 @@ h2 {
   body { font-size: 0.95em; }     /* 모바일 글자 조금 줄여 한 눈에 */
   .wrap { padding-inline: 12px; }
 
-  .logo {
-    max-width: 85%;       /* 모바일에서는 조금 더 크게 */
-  }
-  .logo-box {
-    margin: 2em 0;        /* 모바일에서는 여백 살짝 줄임 */
-  }
+.logo-box {
+  text-align: center;
+}
+
+.logo {
+  width: 100px;    /* ✅ 가로 크기 고정 */
+  height: auto;    /* 비율 유지 */
+  display: inline-block;
+}
 }</style><script role="script" id="twine-user-script" type="text/twine-javascript">/* ====== 헬퍼 ====== */
 setup.scoreOf = v => v === "상" ? 2 : v === "중" ? 1 : 0;
 setup.labelOfAvg = x => (x >= 1.67 ? "상" : x >= 0.84 ? "중" : "하");
@@ -261,20 +264,16 @@ Macro.add('Choice', {
   $Q5_1 = &quot;&quot;, $Q5_2 = &quot;&quot;, $Q5_3 = &quot;&quot;,
   $S1 = 0, $S2 = 0, $S3 = 0, $S4 = 0, $S5 = 0
 &gt;&gt;
-&lt;div class=&quot;wrap&quot;&gt;
-  &lt;!-- ✅ 로고 이미지 --&gt;
-  &lt;div class=&quot;logo-box&quot;&gt;
-    &lt;img src=&quot;https://github.com/AnGayoung/00art_365/blob/main/00_logo.png?raw=true&quot; alt=&quot;Logo&quot; class=&quot;logo&quot;&gt;
-  &lt;/div&gt;
+&lt;img src=&quot;https://github.com/AnGayoung/00art_365/blob/main/00_logo.png?raw=true&quot; width=&#39;300&#39;&gt;
 
 &lt;div class=&quot;wrap&quot;&gt;
   &lt;h2&gt;공공미술 작품 점검&lt;/h2&gt;
+
   &lt;p class=&quot;small&quot;&gt;안녕하세요. 오늘도 공공미술 작품을 안전하게 지켜주셔서 감사합니다.
 작품이 시민들과 건강하게 만날 수 있도록, 아래 점검표를 확인해 주세요.
-항목별로 ‘상·중·하’를 선택해 주시면 관리 기록에 반영됩니다.
-작은 체크 한 번이 작품의 안전과 시민의 즐거움을 지켜줍니다.&lt;/p&gt;
+항목별로 ‘상·중·하’를 선택해 주시면 관리 기록에 반영됩니다.&lt;/p&gt;
   &lt;div class=&quot;hr&quot;&gt;&lt;/div&gt;
-  &lt;span class=&quot;btn-start&quot;&gt;&lt;&lt;link &quot;시작하기 ▶&quot;&gt;&gt;&lt;&lt;goto &quot;1. 작품 상태 점검&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/span&gt;
+  &lt;span class=&quot;btn-start&quot;&gt;&lt;&lt;link &quot;시작하기&quot;&gt;&gt;&lt;&lt;goto &quot;1. 작품 상태 점검&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/span&gt;
 &lt;/div&gt;</tw-passagedata><tw-passagedata pid="2" name="1. 작품 상태 점검" tags="" position="350,150" size="100,100">&lt;div class=&quot;wrap&quot;&gt;
 &lt;h2&gt;1. 작품 상태 점검&lt;/h2&gt;
 &lt;p&gt;&lt;b&gt;1)&lt;/b&gt; 작품 표면(스크래치, 균열, 변색 등)에 이상이 없는가?&lt;/p&gt;
@@ -283,7 +282,7 @@ Macro.add('Choice', {
 &lt;&lt;Choice &quot;$Q1_2&quot;&gt;&gt;
 &lt;p&gt;&lt;b&gt;3)&lt;/b&gt; 조명·영상·사운드 등 표현 요소가 정상적으로 작동하는가?&lt;/p&gt;
 &lt;&lt;Choice &quot;$Q1_3&quot;&gt;&gt;
-&lt;span class=&quot;btn-next&quot;&gt;&lt;&lt;link &quot;다음으로 ▶&quot;&gt;&gt;&lt;&lt;goto &quot;2. 주변 환경 점검&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/span&gt;
+&lt;span class=&quot;btn-next&quot;&gt;&lt;&lt;link &quot;다음으로&quot;&gt;&gt;&lt;&lt;goto &quot;2. 주변 환경 점검&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/span&gt;
 &lt;/div&gt;
 </tw-passagedata><tw-passagedata pid="3" name="2. 주변 환경 점검" tags="" position="475,150" size="100,100">&lt;div class=&quot;wrap&quot;&gt;
 &lt;h2&gt;2. 주변 환경 점검&lt;/h2&gt;
@@ -293,7 +292,7 @@ Macro.add('Choice', {
 &lt;&lt;Choice &quot;$Q2_2&quot;&gt;&gt;
 &lt;p&gt;&lt;b&gt;3)&lt;/b&gt; 외부 충격·접촉 흔적(손자국, 파손 시도 등)이 없는가?&lt;/p&gt;
 &lt;&lt;Choice &quot;$Q2_3&quot;&gt;&gt;
-&lt;span class=&quot;btn-next&quot;&gt;&lt;&lt;link &quot;다음으로 ▶&quot;&gt;&gt;&lt;&lt;goto &quot;3. 기술 운영 점검&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/span&gt;
+&lt;span class=&quot;btn-next&quot;&gt;&lt;&lt;link &quot;다음으로&quot;&gt;&gt;&lt;&lt;goto &quot;3. 기술 운영 점검&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/span&gt;
 &lt;/div&gt;
 </tw-passagedata><tw-passagedata pid="4" name="3. 기술 운영 점검" tags="" position="575,150" size="100,100">&lt;div class=&quot;wrap&quot;&gt;
 &lt;h2&gt;3. 기술 운영 점검&lt;/h2&gt;
@@ -303,7 +302,7 @@ Macro.add('Choice', {
 &lt;&lt;Choice &quot;$Q3_2&quot;&gt;&gt;
 &lt;p&gt;&lt;b&gt;3)&lt;/b&gt; 소프트웨어·네트워크 연결 상태가 안정적인가?&lt;/p&gt;
 &lt;&lt;Choice &quot;$Q3_3&quot;&gt;&gt;
-&lt;span class=&quot;btn-next&quot;&gt;&lt;&lt;link &quot;다음으로 ▶&quot;&gt;&gt;&lt;&lt;goto &quot;4. 안전 점검&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/span&gt;
+&lt;span class=&quot;btn-next&quot;&gt;&lt;&lt;link &quot;다음으로&quot;&gt;&gt;&lt;&lt;goto &quot;4. 안전 점검&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/span&gt;
 &lt;/div&gt;</tw-passagedata><tw-passagedata pid="5" name="4. 안전 점검" tags="" position="375,350" size="100,100">&lt;div class=&quot;wrap&quot;&gt;
 &lt;h2&gt;4. 안전 점검&lt;/h2&gt;
 &lt;p&gt;&lt;b&gt;1)&lt;/b&gt; 전선 피복, 플러그, 배선이 안전하게 설치되어 있는가?&lt;/p&gt;
@@ -312,7 +311,7 @@ Macro.add('Choice', {
 &lt;&lt;Choice &quot;$Q4_2&quot;&gt;&gt;
 &lt;p&gt;&lt;b&gt;3)&lt;/b&gt; 비상 시 전원 차단 및 긴급 조치가 가능한가?&lt;/p&gt;
 &lt;&lt;Choice &quot;$Q4_3&quot;&gt;&gt;
-&lt;span class=&quot;btn-next&quot;&gt;&lt;&lt;link &quot;다음으로 ▶&quot;&gt;&gt;&lt;&lt;goto &quot;5. 기록 운영 관리&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/span&gt;
+&lt;span class=&quot;btn-next&quot;&gt;&lt;&lt;link &quot;다음으로&quot;&gt;&gt;&lt;&lt;goto &quot;5. 기록 운영 관리&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/span&gt;
 &lt;/div&gt;</tw-passagedata><tw-passagedata pid="6" name="5. 기록 운영 관리" tags="" position="500,350" size="100,100">&lt;div class=&quot;wrap&quot;&gt;
 &lt;h2&gt;5. 기록 운영 관리&lt;/h2&gt;
 &lt;p&gt;&lt;b&gt;1)&lt;/b&gt; 점검 일시·담당자 기록이 정확히 이루어졌는가?&lt;/p&gt;
@@ -321,8 +320,9 @@ Macro.add('Choice', {
 &lt;&lt;Choice &quot;$Q5_2&quot;&gt;&gt;
 &lt;p&gt;&lt;b&gt;3)&lt;/b&gt; 추후 유지보수 및 관리 계획이 메모·공유되었는가?&lt;/p&gt;
 &lt;&lt;Choice &quot;$Q5_3&quot;&gt;&gt;
-&lt;span class=&quot;btn-next&quot;&gt;&lt;&lt;link &quot;다음으로 ▶&quot;&gt;&gt;&lt;&lt;goto &quot;결과 보기&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/span&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="7" name="결과 보기" tags="" position="625,350" size="100,100">&lt;h2&gt;점검 결과 전송&lt;/h2&gt;
+&lt;span class=&quot;btn-next&quot;&gt;&lt;&lt;link &quot;다음으로&quot;&gt;&gt;&lt;&lt;goto &quot;결과 보기&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/span&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="7" name="결과 보기" tags="" position="625,350" size="100,100">&lt;div class=&quot;wrap&quot;&gt;
+&lt;h2&gt;점검 결과 전송&lt;/h2&gt;
 &lt;div class=&quot;hr&quot;&gt;&lt;/div&gt;
 &lt;p style=&quot;margin-top:1em; line-height:1.4; text-align:left;&quot;&gt;
 점검에 협조해 주셔서 감사합니다.&lt;br&gt;
