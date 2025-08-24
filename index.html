@@ -182,13 +182,31 @@ h2 {
   line-height: 1.2;
 }
 
+/* 로고 이미지 스타일 */
+.logo-box {
+  text-align: center;
+  margin: 2.5em 0;        /* ✅ 위아래 여백 */
+}
+
+.logo {
+  max-width: 75%;         /* ✅ 화면 폭의 75%까지만 */
+  height: auto;
+  display: inline-block;
+}
+
 /* 반응형 */
 @media (max-width:480px){
   h2 { font-size:1.05em; }
   body { font-size: 0.95em; }     /* 모바일 글자 조금 줄여 한 눈에 */
   .wrap { padding-inline: 12px; }
-}
-</style><script role="script" id="twine-user-script" type="text/twine-javascript">/* ====== 헬퍼 ====== */
+
+  .logo {
+    max-width: 85%;       /* 모바일에서는 조금 더 크게 */
+  }
+  .logo-box {
+    margin: 2em 0;        /* 모바일에서는 여백 살짝 줄임 */
+  }
+}</style><script role="script" id="twine-user-script" type="text/twine-javascript">/* ====== 헬퍼 ====== */
 setup.scoreOf = v => v === "상" ? 2 : v === "중" ? 1 : 0;
 setup.labelOfAvg = x => (x >= 1.67 ? "상" : x >= 0.84 ? "중" : "하");
 
@@ -244,7 +262,13 @@ Macro.add('Choice', {
   $S1 = 0, $S2 = 0, $S3 = 0, $S4 = 0, $S5 = 0
 &gt;&gt;
 &lt;div class=&quot;wrap&quot;&gt;
-  &lt;h2&gt;공공미술 365 설치물 점검&lt;/h2&gt;
+  &lt;!-- ✅ 로고 이미지 --&gt;
+  &lt;div class=&quot;logo-box&quot;&gt;
+    &lt;img src=&quot;https://github.com/AnGayoung/00art_365/blob/main/00_logo.png?raw=true&quot; alt=&quot;Logo&quot; class=&quot;logo&quot;&gt;
+  &lt;/div&gt;
+
+&lt;div class=&quot;wrap&quot;&gt;
+  &lt;h2&gt;공공미술 작품 점검&lt;/h2&gt;
   &lt;p class=&quot;small&quot;&gt;안녕하세요. 오늘도 공공미술 작품을 안전하게 지켜주셔서 감사합니다.
 작품이 시민들과 건강하게 만날 수 있도록, 아래 점검표를 확인해 주세요.
 항목별로 ‘상·중·하’를 선택해 주시면 관리 기록에 반영됩니다.
